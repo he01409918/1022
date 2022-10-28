@@ -6,11 +6,16 @@ using Photon.Realtime;
 
 public class NetworkConnect : MonoBehaviourPunCallbacks
 {
+    public Transform startPos;
     void Start()
     {
         PhotonNetwork.ConnectUsingSettings();
     }
 
+    private void Update()
+    {
+        Debug.LogError(PhotonNetwork.CurrentRoom.PlayerCount);
+    }
     public override void OnConnectedToMaster()
     {
         Debug.LogError("連線成功");
@@ -28,5 +33,6 @@ public class NetworkConnect : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         Debug.LogError("加入房間成功");
+        PhotonNetwork.Instantiate("Player", startPos.position, startPos.rotation);
     }
 }
