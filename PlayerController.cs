@@ -28,6 +28,11 @@ public class PlayerController : MonoBehaviourPun
 
     private void Update()
     {
-
+        if (photonView.IsMine)
+        {
+            headPos.SetPositionAndRotation(NetworkConnect.Instance.headPos.position, NetworkConnect.Instance.headPos.rotation);
+            rightHandPos.SetPositionAndRotation(NetworkConnect.Instance.rightHandPos.position, NetworkConnect.Instance.rightHandPos.rotation);
+            leftHandPos.SetPositionAndRotation(NetworkConnect.Instance.leftHandPos.position, NetworkConnect.Instance.leftHandPos.rotation);
+        }
     }
 }
