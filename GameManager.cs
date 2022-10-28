@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
-public class GameManager : MonoBehaviour
+using Photon.Pun;
+public class GameManager : MonoBehaviourPun
 {
     public static GameManager Instance;
     [Header("分數")]
@@ -15,9 +15,19 @@ public class GameManager : MonoBehaviour
         Instance = this;
     }
 
+    [PunRPC]
     public void OnAddScore(int value) 
     {
         score += value;
         scoreText.text = score.ToString();
     }
+
+    /// <summary>
+    /// 房主呼叫
+    /// </summary>
+    public void AddScore( int value)
+    {
+        photonView.RPC(nameof(OnAddScore), RpcTarget.AllBuffered, value);
+    }
+
 }
