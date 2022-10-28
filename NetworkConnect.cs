@@ -10,6 +10,7 @@ public class NetworkConnect : MonoBehaviourPunCallbacks
     void Start()
     {
         PhotonNetwork.ConnectUsingSettings();
+        PhotonNetwork.LocalPlayer.NickName = "Tang";
     }
 
     private void Update()
@@ -34,5 +35,14 @@ public class NetworkConnect : MonoBehaviourPunCallbacks
     {
         Debug.LogError("加入房間成功");
         PhotonNetwork.Instantiate("Player", startPos.position, startPos.rotation);
+    }
+
+    public override void OnPlayerEnteredRoom(Player newPlayer)
+    {
+
+    }
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        
     }
 }
