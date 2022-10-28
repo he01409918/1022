@@ -33,6 +33,16 @@ public class PlayerController : MonoBehaviourPun
             headPos.SetPositionAndRotation(NetworkConnect.Instance.headPos.position, NetworkConnect.Instance.headPos.rotation);
             rightHandPos.SetPositionAndRotation(NetworkConnect.Instance.rightHandPos.position, NetworkConnect.Instance.rightHandPos.rotation);
             leftHandPos.SetPositionAndRotation(NetworkConnect.Instance.leftHandPos.position, NetworkConnect.Instance.leftHandPos.rotation);
+
+            photonView.RPC(nameof(OnSyncPlayerPos), RpcTarget.Others, headPos.position, headPos.rotation, rightHandPos.position, rightHandPos.rotation, leftHandPos.position, leftHandPos.rotation);
         }
     }
+
+    private void OnSyncPlayerPos(Vector3 _headPos , Quaternion _headRot , Vector3 _rightHandPos, Quaternion _rightHandRot, Vector3 _leftHandPos, Quaternion _leftHandRot)
+    {
+        headPos.SetPositionAndRotation(_headPos, _headRot);
+        rightHandPos.SetPositionAndRotation(_rightHandPos, _rightHandRot);
+        leftHandPos.SetPositionAndRotation(_leftHandPos, _leftHandRot);
+    }
+
 }
