@@ -10,7 +10,7 @@ public class NetworkConnect : MonoBehaviourPunCallbacks
 
     public Transform headPos;
     public Transform rightHandPos;
-    public Transform lefHandPos;
+    public Transform leftHandPos;
 
     public Transform startPos;
     void Start()
