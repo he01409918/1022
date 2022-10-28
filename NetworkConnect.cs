@@ -6,9 +6,16 @@ using Photon.Realtime;
 
 public class NetworkConnect : MonoBehaviourPunCallbacks
 {
+    public static NetworkConnect Instance;
+
+    public Transform headPos;
+    public Transform rightHandPos;
+    public Transform lefHandPos;
+
     public Transform startPos;
     void Start()
     {
+        Instance = this;
         PhotonNetwork.ConnectUsingSettings();
         PhotonNetwork.LocalPlayer.NickName = "Tang";
     }
