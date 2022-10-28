@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviourPun
     [Header("分數")]
     public int score;
 
+    public GameObject getScoreSfx;
+    public Transform getScoreSfxPos;
     public Text scoreText;
     private void Start()
     {
@@ -20,6 +22,8 @@ public class GameManager : MonoBehaviourPun
     {
         score += value;
         scoreText.text = score.ToString();
+        GameObject sfx = Instantiate(getScoreSfx , getScoreSfxPos.position , getScoreSfxPos.rotation);
+        Destroy(sfx, 5);
     }
 
     /// <summary>
