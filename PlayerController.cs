@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviourPun
         }
     }
 
+    [PunRPC]
     private void OnSyncPlayerPos(Vector3 _headPos , Quaternion _headRot , Vector3 _rightHandPos, Quaternion _rightHandRot, Vector3 _leftHandPos, Quaternion _leftHandRot)
     {
         headPos.SetPositionAndRotation(_headPos, _headRot);
