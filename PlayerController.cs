@@ -5,6 +5,9 @@ using Photon.Pun;
 
 public class PlayerController : MonoBehaviourPun
 {
+    public Transform headPos;
+    public Transform rightHandPos;
+    public Transform lefHandPos;
     void Start()
     {
         if (photonView.IsMine)
@@ -21,5 +24,10 @@ public class PlayerController : MonoBehaviourPun
             Debug.LogError("別的玩家");
             gameObject.name = photonView.Owner.NickName;
         }
+    }
+
+    private void Update()
+    {
+
     }
 }
