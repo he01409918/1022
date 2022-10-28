@@ -8,6 +8,8 @@ public class NetworkConnect : MonoBehaviourPunCallbacks
 {
     public static NetworkConnect Instance;
 
+    public GameObject playerCamera;
+
     public Transform headPos;
     public Transform rightHandPos;
     public Transform leftHandPos;
@@ -22,7 +24,10 @@ public class NetworkConnect : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-        Debug.LogError(PhotonNetwork.CurrentRoom.PlayerCount);
+        if (PhotonNetwork.IsConnected && PhotonNetwork.InRoom)
+        {
+            Debug.LogError(PhotonNetwork.CurrentRoom.PlayerCount);
+        }
     }
     public override void OnConnectedToMaster()
     {
@@ -41,6 +46,7 @@ public class NetworkConnect : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         Debug.LogError("加入房間成功");
+        playerCamera.transform.position = startPos.position;
         PhotonNetwork.Instantiate("Player", startPos.position, startPos.rotation);
     }
 
