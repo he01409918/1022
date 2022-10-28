@@ -39,10 +39,10 @@ public class NetworkConnect : MonoBehaviourPunCallbacks
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-
+        Debug.LogError($"{newPlayer.NickName}加入房間");
     }
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
-        
+        Debug.LogError($"{otherPlayer.NickName}離開房間");
     }
 }
