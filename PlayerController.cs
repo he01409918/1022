@@ -5,6 +5,7 @@ using Photon.Pun;
 
 public class PlayerController : MonoBehaviourPun
 {
+    public GameObject ik;
     public Transform headPos;
     public Transform rightHandPos;
     public Transform leftHandPos;
@@ -12,9 +13,9 @@ public class PlayerController : MonoBehaviourPun
     {
         if (photonView.IsMine)
         {
-            for (int i = 0; i < transform.childCount; i++)
+            for (int i = 0; i < ik.transform.childCount; i++)
             {
-                transform.GetChild(i).gameObject.layer = 8;
+                ik.transform.GetChild(i).gameObject.layer = 8;
             }
             Debug.LogError("我自己");
             gameObject.name = PhotonNetwork.LocalPlayer.NickName;
