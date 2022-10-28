@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviourPun
 {
@@ -9,6 +10,8 @@ public class PlayerController : MonoBehaviourPun
     public Transform headPos;
     public Transform rightHandPos;
     public Transform leftHandPos;
+
+    public Text playerNameText;
     void Start()
     {
         if (photonView.IsMine)
@@ -19,11 +22,13 @@ public class PlayerController : MonoBehaviourPun
             }
             Debug.LogError("我自己");
             gameObject.name = PhotonNetwork.LocalPlayer.NickName;
+            playerNameText.text = PhotonNetwork.LocalPlayer.NickName;
         }
         else
         {
             Debug.LogError("別的玩家");
             gameObject.name = photonView.Owner.NickName;
+            playerNameText.text = photonView.Owner.NickName;
         }
     }
 
