@@ -9,6 +9,10 @@ public class PlayerController : MonoBehaviourPun
     {
         if (photonView.IsMine)
         {
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                transform.GetChild(i).gameObject.layer = 8;
+            }
             Debug.LogError("我自己");
             gameObject.name = PhotonNetwork.LocalPlayer.NickName;
         }
