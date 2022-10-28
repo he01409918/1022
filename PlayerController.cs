@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviourPun
 {
     public Transform headPos;
     public Transform rightHandPos;
-    public Transform lefHandPos;
+    public Transform leftHandPos;
     void Start()
     {
         if (photonView.IsMine)
